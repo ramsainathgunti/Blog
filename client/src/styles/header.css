@@ -1,0 +1,34 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.nav {
+    display: flex;
+    gap: 10px;
+}
+
+.logo {
+    text-decoration: none;
+    color: #2c3a47;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.loginBtn,
+.registerBtn {
+    padding: 5px 10px;
+    font-size: 1rem;
+    background-color: #cad3c8;
+    border: none;
+    border-radius: 8px;
+    color: black;
+    cursor: pointer;
+}
+
+.loginBtn:hover,
+.registerBtn:hover {
+    background-color: #9aecdb;
+}
