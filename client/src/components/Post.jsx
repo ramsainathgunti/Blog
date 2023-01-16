@@ -1,6 +1,7 @@
 import "../styles/post.css";
+import { formatISO9075 } from "date-fns";
 
-const Post = () => {
+const Post = ({ title, summary, content, cover, createdAt }) => {
   return (
     <div className="post">
       <div className="image">
@@ -12,19 +13,12 @@ const Post = () => {
       </div>
 
       <div className="postContent">
-        <h2>Is ChatGPT a cybersecurity threat?</h2>
+        <h2>{title}</h2>
         <p className="info">
           <a className="author">The Grugq, security researcher</a>
-          <time>2023-01-14 17:19</time>
+          <time>{formatISO9075(new Date(createdAt))}</time>
         </p>
-        <p className="summary">
-          Not only have ChatGPT’s human-like abilities taken the internet by
-          storm, but it has also set a number of industries on edge: a New York
-          school banned ChatGPT over fears that it could be used to cheat,
-          copywriters are already being replaced, and reports claim Google is so
-          alarmed by ChatGPT’s capabilities that it issued a “code red” to
-          ensure the survival of the company’s search business.
-        </p>
+        <p className="summary">{summary}</p>
       </div>
     </div>
   );

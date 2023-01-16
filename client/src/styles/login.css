@@ -1,0 +1,35 @@
+.loginForm {
+    margin: 100px auto;
+    max-width: 500px;
+}
+
+.loginTitle {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.loginInput {
+    display: block;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+    font-size: large;
+    outline: none;
+}
+
+.loginInput:focus {
+    border-bottom: 1px solid #55e6c1;
+}
+
+.lBtn {
+    background-color: #2c3a47;
+    padding: 10px;
+    margin-top: 10px;
+    color: white;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: large;
+    cursor: pointer;
+}

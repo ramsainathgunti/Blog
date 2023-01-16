@@ -18,7 +18,9 @@
 }
 
 .loginBtn,
-.registerBtn {
+.registerBtn,
+.loginUserBtn,
+.createPostBtn {
     padding: 5px 10px;
     font-size: 1rem;
     background-color: #cad3c8;
@@ -29,6 +31,8 @@
 }
 
 .loginBtn:hover,
-.registerBtn:hover {
+.registerBtn:hover,
+.loginUserBtn:hover,
+.createPostBtn:hover {
     background-color: #9aecdb;
 }
