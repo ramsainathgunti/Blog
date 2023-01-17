@@ -19,7 +19,7 @@ const login = async(req, res) => {
             }
         );
         res.cookie("token", token);
-        res.status(200).json({ username });
+        res.status(200).json({ username, token });
     } catch (err) {
         res.status(400).json({ msg: err.message });
     }

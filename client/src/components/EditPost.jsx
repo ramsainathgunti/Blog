@@ -1,7 +1,10 @@
 import "../styles/createPost.css";
-import Editor from "./Editor";
+
+import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Editor from "./Editor";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
@@ -9,30 +12,45 @@ const CreatePost = () => {
   const [content, setContent] = useState("");
   const [files, setFiles] = useState("");
   const navigate = useNavigate();
+  const { id } = useParams();
 
-  const createNewPost = async (e) => {
+  useEffect(() => {
+    fetch(`http://localhost:3500/api/post/${id}`).then((response) => {
+      response.json().then((data) => {
+        setTitle(data.title);
+        setSummary(data.summary);
+        setContent(data.content);
+      });
+    });
+  }, []);
+
+  const updatePost = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
 
     const data = new FormData();
     data.set("title", title);
     data.set("summary", summary);
-
+    data.set("id", id);
+    // data.set("file", files[0]);
     data.set("content", content);
-    data.set("file", files[0]);
+    if (files?.[0]) {
+      data.set("file", files?.[0]);
+    }
     const response = await fetch("http://localhost:3500/api/post", {
       headers: { Authorization: `Bearer ${token}` },
-      method: "POST",
+      method: "PUT",
       body: data,
+      credentials: "include",
     });
     if (response.status === 200) {
-      navigate("/");
+      navigate(`/post/${id}`);
     }
   };
 
   return (
-    <form className="createPostForm" onSubmit={createNewPost}>
-      <h1 className="createPostTitle">Create Post</h1>
+    <form className="createPostForm" onSubmit={updatePost}>
+      <h1 className="createPostTitle">Edit Post</h1>
       <input
         type="title"
         placeholder="Title"
@@ -53,7 +71,7 @@ const CreatePost = () => {
         onChange={(e) => setFiles(e.target.files)}
       />
       <Editor value={content} onChange={setContent} />
-      <button className="createPostButton">Post</button>
+      <button className="createPostButton">Edit</button>
     </form>
   );
 };

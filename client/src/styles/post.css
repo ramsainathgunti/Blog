@@ -1,9 +1,15 @@
 .post {
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: 1fr;
     gap: 30px;
     align-items: center;
     margin-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+    .post {
+        grid-template-columns: 0.9fr 1.1fr;
+    }
 }
 
 .postContent>h2 {
@@ -27,4 +33,9 @@
 .summary {
     margin: 0;
     line-height: 1.4rem;
+}
+
+.postRedirect {
+    color: inherit;
+    text-decoration: none;
 }

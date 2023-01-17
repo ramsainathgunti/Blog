@@ -29,6 +29,8 @@ const Login = () => {
     if (response.status === 200) {
       const data = await response.json();
       localStorage.setItem("username", data.username);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", { ...data });
       setUserInfo(data);
       //await getProfile();
       navigate("/");

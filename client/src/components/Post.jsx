@@ -1,21 +1,27 @@
 import "../styles/post.css";
 import { formatISO9075 } from "date-fns";
+import { Link } from "react-router-dom";
 
-const Post = ({ title, summary, content, cover, createdAt }) => {
+const Post = ({ _id, title, summary, content, cover, createdAt, author }) => {
   return (
     <div className="post">
-      <div className="image">
-        <img
-          className="postImg"
-          src="https://techcrunch.com/wp-content/uploads/2023/01/GettyImages-1320103102.jpg?w=1390&crop=1"
-          alt=""
-        />
-      </div>
+      <Link to={`/post/${_id}`} className="postRedirect">
+        <div className="image">
+          <img
+            className="postImg"
+            src={`http://localhost:3500/${cover}`}
+            alt=""
+          />
+        </div>
+      </Link>
 
       <div className="postContent">
-        <h2>{title}</h2>
+        <Link to={`/post/${_id}`} className="postRedirect">
+          <h2>{title}</h2>
+        </Link>
+
         <p className="info">
-          <a className="author">The Grugq, security researcher</a>
+          <a className="author">{author.username}</a>
           <time>{formatISO9075(new Date(createdAt))}</time>
         </p>
         <p className="summary">{summary}</p>
